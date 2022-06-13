@@ -50,5 +50,12 @@ public class MovieService {
         }
         return movieById;
     }
+    public Movie  updateMovieNotAvailable(Integer id) {
+        Movie movieById = movieRepository.findById(id).get();
+        if (movieById != null) {
+            movieById.setAvailable(false);
+        }
+        return movieById;
+    }
 
 }

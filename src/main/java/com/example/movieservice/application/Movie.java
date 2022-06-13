@@ -1,21 +1,27 @@
 package com.example.movieservice.application;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Movie")
+@ApiModel("data of Movie")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("unique id of Movie")
     private Integer id;
     @Column(name = "name")
+    @ApiModelProperty("Name of Movie")
     private String name;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "category")
     private MovieCategory category;
     @Column(name = "isAvailable")
-    private Boolean isAvailable;
+    private boolean isAvailable;
 
     public Movie(String name, MovieCategory category) {
         this.name = name;
@@ -23,11 +29,11 @@ public class Movie {
         this.isAvailable = false;
     }
 
-    public Boolean getAvailable() {
+    public boolean getAvailable() {
         return isAvailable;
     }
 
-    public void setAvailable(Boolean available) {
+    public void setAvailable(boolean available) {
         isAvailable = available;
     }
 
